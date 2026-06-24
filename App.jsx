@@ -140,10 +140,8 @@ export default function App() {
 
     const cleanNumber = trackingNumber.trim();
 
-    localStorage.setItem('trackingNumber', cleanNumber);
-    localStorage.setItem('appLang', lang);
-
-    navigate(`/${cleanNumber}`);
+    // Correction ici : On utilise la fonction d'aiguillage intelligente !
+    redirectionLogique(cleanNumber);
   };
 
   const renderErrorText = () => {
