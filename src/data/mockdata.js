@@ -10,7 +10,7 @@ export const trackingTranslations = {
     en: { back: "← Back", title: "Shipment Status", labelNum: "Code:", step1: "Verified", step2: "Packing", step3: "In Transit", step4: "Accomplished" }
   },
   "JULES": {
-    fr: { back: "← Retour", title: "Suivre mes achats", labelNum: "N° de commande :", step1: "Enregistrée", step2: "En préparation", step3: "Expédiée", step4: "Livrée en magasin/domicile" },
+    fr: { back: "← Retour", title: "Suivre mes achats", labelNum: "N° de commande :", step1: "Enregistrée", step2: "Préparation logistique", step3: "Expédiée", step4: "Prête en magasin / Livrée" },
     en: { back: "← Back", title: "Track my purchases", labelNum: "Order No:", step1: "Registered", step2: "Preparing", step3: "Shipped", step4: "Delivered" }
   }
 };
@@ -54,21 +54,21 @@ export const brandStyles = {
   },
   "JULES": {
     isSpider: false,
-    primaryColor: "#112233",       // Bleu marine profond Jules
-    secondaryColor: "#d9534f",     // Rouge brique/orangé pour les détails
-    fontFamily: "'Helvetica Neue', Arial, sans-serif", // Style urbain moderne
-    cardBg: "#ffffff",             // Fond blanc épuré
-    cardBorderTop: "5px solid #112233",
-    textColor: "#222222",
-    numBoxBg: "#f4f6f8",
-    numBoxColor: "#112233",
-    numBoxBorder: "3px solid #d9534f",
-    progressBg: "#eaedf1",
+    primaryColor: "#0f233c",       // Bleu Marine profond chic
+    secondaryColor: "#2d5a27",     // Vert sapin urbain/casual
+    fontFamily: "'Inter', sans-serif", 
+    cardBg: "#ffffff",             // Fond Blanc pur pour la carte
+    cardBorderTop: "5px solid #0f233c", // Barre supérieure bleu marine
+    textColor: "#1f2937",          // Texte gris anthracite très foncé
+    numBoxBg: "#f3f4f6",           // Boîtier du numéro gris clair épuré
+    numBoxColor: "#0f233c",        // Numéro écrit en bleu marine
+    numBoxBorder: "3px solid #2d5a27", // Ligne verte à gauche du numéro
+    progressBg: "#e5e7eb",         // Barre de chargement vide gris moyen
     progressHeight: "5px",
-    statusBg: "#f4f6f8",
-    statusTextColor: "#112233",
-    statusBorder: "1px solid #eaedf1",
-    statusIcon: "📦 "
+    statusBg: "#0f233c",           // Encadré final Bleu Marine
+    statusTextColor: "#ffffff",    // Texte blanc à l'intérieur
+    statusBorder: "none",
+    statusIcon: "👕 "              // Icône vêtement
   }
 };
 
@@ -83,6 +83,6 @@ export const trackingData = {
   },
   "JUL-88321-FR": {
     brand: "JULES", currentStep: 2, progressWidth: "45%",
-    status: { fr: "Votre commande est en cours de préparation par nos équipes logistiques.", en: "Your order is being prepared by our logistics team." }
+    status: { fr: "Vos articles JULES sont préparés avec soin par nos équipes logistiques.", en: "Your JULES items are being carefully prepared by our logistics team." }
   }
 };
