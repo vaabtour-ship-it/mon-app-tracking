@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom' 
-import { trackingData } from './data/mockdata' 
+import { trackingData } from './data/mockShipments';
 import './App.css'
 
 const translations = {

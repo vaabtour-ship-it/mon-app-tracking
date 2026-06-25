@@ -1,6 +1,7 @@
 // src/TrackingResult.jsx
 import { useNavigate, useParams } from 'react-router-dom';
-import { trackingData, brandStyles } from './data/mockdata';
+import { brandStyles } from './data/mockBrands';         // <-- Nouvel import !
+import { trackingData } from './data/mockShipments';     // <-- Nouvel import !
 import { globalTranslations } from './data/translations';
 import './App.css';
 
@@ -9,7 +10,6 @@ function TrackingResult() {
   const { suiviId } = useParams();
 
   const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
-  
   const currentLang = localStorage.getItem('appLang') || browserLang || 'fr';
   
   const trackingNumber = suiviId || localStorage.getItem('trackingNumber');
@@ -19,9 +19,9 @@ function TrackingResult() {
     const fallbackT = globalTranslations[currentLang] || globalTranslations.fr || globalTranslations.en;
     return (
       <div className="app-container" style={{ color: '#fff', textAlign: 'center', marginTop: '50px' }}>
-        <p>{fallbackT.notFound || "Numéro introuvable / Tracking not found"}</p>
+        <p>{fallbackT.notFound || "Numéro introuvable"}</p>
         <button className="btn-suivre" onClick={() => navigate('/')}>
-          {fallbackT.back || "← Retour"}
+          {fallbackT.back}
         </button>
       </div>
     );
@@ -31,7 +31,6 @@ function TrackingResult() {
   const ui = brandStyles[brand] || brandStyles["Atelier Tuffery"];
   
   const t = globalTranslations[currentLang] || globalTranslations.en || globalTranslations.fr;
-  
   const currentStatus = currentTracking.status[currentLang] || currentTracking.status.en || currentTracking.status.fr;
 
   const styles = {
