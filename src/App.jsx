@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom' 
+import { trackingData } from './data/trackingData' // <-- Import pour valider le numéro
 import './App.css'
 
 const translations = {
@@ -91,13 +92,10 @@ export default function App() {
     localStorage.setItem('trackingNumber', number);
     localStorage.setItem('appLang', lang);
 
-    if (number.includes('0731') || number.includes('07')) {
-      navigate('/marque-b');
-    } 
-    else if (number.includes('3107') || number.includes('31')) {
-      navigate('/suivi');
-    } 
-    else {
+    // On vérifie si le numéro existe dans notre base de données mockée
+    if (trackingData[number]) {
+      navigate(`/${number}`); // Redirection vers le composant unique
+    } else {
       setError('unrecognized');
     }
   }, [navigate, lang]);
@@ -139,8 +137,6 @@ export default function App() {
     }
 
     const cleanNumber = trackingNumber.trim();
-
-    // Correction ici : On utilise la fonction d'aiguillage intelligente !
     redirectionLogique(cleanNumber);
   };
 
