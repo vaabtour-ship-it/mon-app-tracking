@@ -9,10 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* Page d'accueil (Le moteur de recherche) */}
         <Route path="/" element={<App />} />
-        
-        {/* Route unique et dynamique pour tous les colis (Tuffery, SPIDER, etc.) */}
         <Route path="/:suiviId" element={<TrackingResult />} />
       </Routes>
     </BrowserRouter>

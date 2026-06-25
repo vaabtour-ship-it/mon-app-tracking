@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom' 
-import { trackingData } from './data/trackingData' // <-- Import pour valider le numéro
+import { trackingData } from './data/mockdata' // <-- Branché sur ton vrai mockdata.js
 import './App.css'
 
 const translations = {
@@ -92,9 +92,9 @@ export default function App() {
     localStorage.setItem('trackingNumber', number);
     localStorage.setItem('appLang', lang);
 
-    // On vérifie si le numéro existe dans notre base de données mockée
+    // On vérifie si le numéro existe bien dans mockdata.js
     if (trackingData[number]) {
-      navigate(`/${number}`); // Redirection vers le composant unique
+      navigate(`/${number}`); // On redirige vers l'URL dynamique (ex: /SPD-9942-X)
     } else {
       setError('unrecognized');
     }
