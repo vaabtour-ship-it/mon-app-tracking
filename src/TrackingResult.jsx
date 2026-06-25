@@ -7,17 +7,21 @@ import './App.css';
 function TrackingResult() {
   const navigate = useNavigate();
   const { suiviId } = useParams();
-  const currentLang = localStorage.getItem('appLang') || 'fr';
+
+  const browserLang = (navigator.language || navigator.userLanguage).split('-')[0];
+  
+  const currentLang = localStorage.getItem('appLang') || browserLang || 'fr';
   
   const trackingNumber = suiviId || localStorage.getItem('trackingNumber');
   const currentTracking = trackingData[trackingNumber];
 
   if (!currentTracking) {
+    const fallbackT = globalTranslations[currentLang] || globalTranslations.fr || globalTranslations.en;
     return (
       <div className="app-container" style={{ color: '#fff', textAlign: 'center', marginTop: '50px' }}>
-        <p>Numéro introuvable / Tracking not found</p>
+        <p>{fallbackT.notFound || "Numéro introuvable / Tracking not found"}</p>
         <button className="btn-suivre" onClick={() => navigate('/')}>
-          ← Retour à la recherche
+          {fallbackT.back || "← Retour"}
         </button>
       </div>
     );
@@ -26,8 +30,9 @@ function TrackingResult() {
   const brand = currentTracking.brand;
   const ui = brandStyles[brand] || brandStyles["Atelier Tuffery"];
   
-  const t = globalTranslations[currentLang] || globalTranslations.fr;
-  const currentStatus = currentTracking.status[currentLang] || currentTracking.status.fr;
+  const t = globalTranslations[currentLang] || globalTranslations.en || globalTranslations.fr;
+  
+  const currentStatus = currentTracking.status[currentLang] || currentTracking.status.en || currentTracking.status.fr;
 
   const styles = {
     btnBack: ui.btnBackStyle,
