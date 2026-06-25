@@ -1,6 +1,7 @@
 // src/TrackingResult.jsx
 import { useNavigate, useParams } from 'react-router-dom';
-import { trackingData, trackingTranslations, brandStyles } from './data/mockdata';
+import { trackingData, brandStyles } from './data/mockdata';
+import { globalTranslations } from './data/translations'; // <-- On importe le nouveau fichier de traduction !
 import './App.css';
 
 function TrackingResult() {
@@ -25,10 +26,11 @@ function TrackingResult() {
   const brand = currentTracking.brand;
   const ui = brandStyles[brand] || brandStyles["Atelier Tuffery"];
   
-  const brandTranslations = trackingTranslations[brand] || trackingTranslations["Atelier Tuffery"];
-  const t = brandTranslations[currentLang] || brandTranslations.fr;
+  // On récupère les traductions globales et uniques selon la langue (plus du tout par marque !)
+  const t = globalTranslations[currentLang] || globalTranslations.fr;
   const currentStatus = currentTracking.status[currentLang] || currentTracking.status.fr;
 
+  // --- STYLES DYNAMIQUES ---
   const styles = {
     btnBack: ui.isSpider ? {
       background: 'rgba(255, 0, 60, 0.1)', color: ui.primaryColor, border: `1px solid ${ui.primaryColor}`,

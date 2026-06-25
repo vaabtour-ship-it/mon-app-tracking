@@ -1,19 +1,4 @@
-// src/data/mockdata.js
 
-export const trackingTranslations = {
-  "Atelier Tuffery": {
-    fr: { back: "← Retour", title: "Suivi de votre commande", labelNum: "Numéro :", step1: "Validée", step2: "Préparation", step3: "En transit", step4: "Livré" },
-    en: { back: "← Back", title: "Track your order", labelNum: "Number:", step1: "Verified", step2: "Packing", step3: "In transit", step4: "Delivered" }
-  },
-  "SPIDER": {
-    fr: { back: "← Retour", title: "Statut de l'expédition", labelNum: "Code :", step1: "Validé", step2: "Conditionnement", step3: "En Transit", step4: "Objectif Atteint" },
-    en: { back: "← Back", title: "Shipment Status", letterNum: "Code:", step1: "Verified", step2: "Packing", step3: "In Transit", step4: "Accomplished" }
-  },
-  "JULES": {
-    fr: { back: "← Retour", title: "Suivre mes achats", labelNum: "N° de commande :", step1: "Enregistrée", step2: "Préparation logistique", step3: "Expédiée", step4: "Prête en magasin / Livrée" },
-    en: { back: "← Back", title: "Track my purchases", labelNum: "Order No:", step1: "Registered", step2: "Preparing", step3: "Shipped", step4: "Delivered" }
-  }
-};
 
 export const brandStyles = {
   "Atelier Tuffery": {
