@@ -2,58 +2,113 @@
 
 export const brandStyles = {
   "Atelier Tuffery": {
-    isSpider: false,
     primaryColor: "#1a2a40",
     secondaryColor: "#c8a27c",
     fontFamily: "serif",
     cardBg: "var(--card-bg, #fcfbfa)",
     cardBorderTop: "5px solid #1a2a40",
     textColor: "var(--text-color, #1a1a1a)",
+    cardRadius: "12px",
+    cardShadow: "0 10px 30px rgba(0,0,0,0.1)",
     numBoxBg: "#f3ece5",
     numBoxColor: "#7c533c",
     numBoxBorder: "3px solid #c8a27c",
+    numBoxRadius: "6px",
+    numBoxWeight: "600",
+    numBoxMargin: "30px",
     progressBg: "#e0e5eb",
     progressHeight: "6px",
+    progressShadow: "none",
     statusBg: "#eef2f6",
     statusTextColor: "#1a2a40",
     statusBorder: "none",
-    statusIcon: ""
+    statusIcon: "",
+    statusRadius: "8px",
+    statusMargin: "30px",
+    letterSpacing: "3px",
+    titleFontSize: "20px",
+    titleMargin: "0 0 10px 0",
+    stepWeight: "400",
+    stepTransform: "none",
+    showDivider: true,
+    subtitleColor: "#1a2a40",
+    btnBackStyle: {
+      background: 'transparent', color: 'var(--text-color, #1a2a40)', border: '1px solid rgba(0,0,0,0.2)',
+      padding: '8px 16px', fontSize: '14px', borderRadius: '4px', marginBottom: '15px', cursor: 'pointer'
+    }
   },
   "SPIDER": {
-    isSpider: true,
     primaryColor: "#ff003c",
     secondaryColor: "#ff003c",
     fontFamily: "Impact, sans-serif",
     cardBg: "#0d0d11",
     cardBorderTop: "4px solid #ff003c",
     textColor: "#ffffff",
+    cardRadius: "8px",
+    cardShadow: "0 20px 40px rgba(0,0,0,0.6)",
     numBoxBg: "#16161f",
     numBoxColor: "#ffffff",
     numBoxBorder: "4px solid #ff003c",
+    numBoxRadius: "4px",
+    numBoxWeight: "bold",
+    numBoxMargin: "35px",
     progressBg: "#22222b",
     progressHeight: "4px",
+    progressShadow: "0 0 10px #ff003c",
     statusBg: "rgba(255, 255, 255, 0.03)",
     statusTextColor: "#ffffff",
     statusBorder: "1px dashed rgba(255, 255, 255, 0.1)",
-    statusIcon: "⚡ "
+    statusIcon: "⚡ ",
+    statusRadius: "4px",
+    statusMargin: "35px",
+    letterSpacing: "4px",
+    titleFontSize: "26px",
+    titleMargin: "0 0 5px 0",
+    stepWeight: "bold",
+    stepTransform: "uppercase",
+    showDivider: false,
+    subtitleColor: "#aaa",
+    btnBackStyle: {
+      background: 'rgba(255, 0, 60, 0.1)', color: "#ff003c", border: '1px solid #ff003c',
+      padding: '8px 16px', fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase',
+      letterSpacing: '1px', borderRadius: '4px', marginBottom: '15px', cursor: 'pointer'
+    }
   },
   "JULES": {
-    isSpider: false,
-    primaryColor: "#1e4620",       // Vert sapin/logistique dominant
-    secondaryColor: "#0f233c",     // Bleu marine en touche secondaire
+    primaryColor: "#1e4620",       
+    secondaryColor: "#0f233c",     
     fontFamily: "'Inter', sans-serif", 
-    cardBg: "#ffffff",             // Fond Blanc pur pour la carte
-    cardBorderTop: "5px solid #1e4620", // Grosse barre supérieure Verte
-    textColor: "#1f2937",          // Texte gris anthracite très foncé
-    numBoxBg: "#f3f4f6",           // Boîtier du numéro gris clair épuré
-    numBoxColor: "#1e4620",        // Numéro écrit en Vert
-    numBoxBorder: "3px solid #0f233c", // Ligne bleu marine à gauche du numéro
-    progressBg: "#e5e7eb",         // Barre vide gris moyen
+    cardBg: "#ffffff",             
+    cardBorderTop: "5px solid #1e4620", 
+    textColor: "#1f2937",          
+    cardRadius: "12px",
+    cardShadow: "0 10px 30px rgba(0,0,0,0.1)",
+    numBoxBg: "#f3f4f6",           
+    numBoxColor: "#1e4620",        
+    numBoxBorder: "3px solid #0f233c", 
+    numBoxRadius: "6px",
+    numBoxWeight: "600",
+    numBoxMargin: "30px",
+    progressBg: "#e5e7eb",         
     progressHeight: "5px",
-    statusBg: "#1e4620",           // Grand encadré final Vert Sapin
-    statusTextColor: "#ffffff",    // Texte blanc dedans pour le contraste
+    progressShadow: "none",
+    statusBg: "#1e4620",           
+    statusTextColor: "#ffffff",    
     statusBorder: "none",
-    statusIcon: "🌿 "
+    statusIcon: "🌿 ",
+    statusRadius: "8px",
+    statusMargin: "30px",
+    letterSpacing: "3px",
+    titleFontSize: "20px",
+    titleMargin: "0 0 10px 0",
+    stepWeight: "400",
+    stepTransform: "none",
+    showDivider: true,
+    subtitleColor: "#1a2a40",
+    btnBackStyle: {
+      background: 'transparent', color: 'var(--text-color, #1a2a40)', border: '1px solid rgba(0,0,0,0.2)',
+      padding: '8px 16px', fontSize: '14px', borderRadius: '4px', marginBottom: '15px', cursor: 'pointer'
+    }
   }
 };
 

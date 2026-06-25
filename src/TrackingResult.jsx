@@ -1,7 +1,7 @@
 // src/TrackingResult.jsx
 import { useNavigate, useParams } from 'react-router-dom';
 import { trackingData, brandStyles } from './data/mockdata';
-import { globalTranslations } from './data/translations'; // <-- On importe le nouveau fichier de traduction !
+import { globalTranslations } from './data/translations';
 import './App.css';
 
 function TrackingResult() {
@@ -26,57 +26,40 @@ function TrackingResult() {
   const brand = currentTracking.brand;
   const ui = brandStyles[brand] || brandStyles["Atelier Tuffery"];
   
-  // On récupère les traductions globales et uniques selon la langue (plus du tout par marque !)
   const t = globalTranslations[currentLang] || globalTranslations.fr;
   const currentStatus = currentTracking.status[currentLang] || currentTracking.status.fr;
 
-  // --- STYLES DYNAMIQUES ---
   const styles = {
-    btnBack: ui.isSpider ? {
-      background: 'rgba(255, 0, 60, 0.1)', color: ui.primaryColor, border: `1px solid ${ui.primaryColor}`,
-      padding: '8px 16px', fontSize: '13px', fontWeight: 'bold', textTransform: 'uppercase',
-      letterSpacing: '1px', borderRadius: '4px', marginBottom: '15px', cursor: 'pointer'
-    } : {
-      background: 'transparent', color: 'var(--text-color, #1a2a40)', border: '1px solid rgba(0,0,0,0.2)',
-      padding: '8px 16px', fontSize: '14px', borderRadius: '4px', marginBottom: '15px', cursor: 'pointer'
-    },
+    btnBack: ui.btnBackStyle,
     card: {
-      background: ui.cardBg, borderTop: ui.cardBorderTop, borderRadius: ui.isSpider ? '8px' : '12px',
-      padding: '35px', color: ui.textColor, boxShadow: ui.isSpider ? '0 20px 40px rgba(0,0,0,0.6)' : '0 10px 30px rgba(0,0,0,0.1)'
+      background: ui.cardBg, borderTop: ui.cardBorderTop, borderRadius: ui.cardRadius,
+      padding: '35px', color: ui.textColor, boxShadow: ui.cardShadow
     },
     titleBrand: {
-      fontFamily: ui.fontFamily, letterSpacing: ui.isSpider ? '4px' : '3px', textTransform: 'uppercase',
-      fontSize: ui.isSpider ? '26px' : '20px', margin: ui.isSpider ? '0 0 5px 0' : '0 0 10px 0', color: ui.primaryColor
+      fontFamily: ui.fontFamily, letterSpacing: ui.letterSpacing, textTransform: 'uppercase',
+      fontSize: ui.titleFontSize, margin: ui.titleMargin, color: ui.primaryColor
     },
     trackingNumBox: {
-      background: ui.numBoxBg, color: ui.numBoxColor, padding: ui.isSpider ? '12px' : '10px', 
-      borderRadius: ui.isSpider ? '4px' : '6px', fontWeight: ui.isSpider ? 'bold' : '600', fontSize: '14px', 
-      letterSpacing: '1px', borderLeft: ui.numBoxBorder, marginBottom: ui.isSpider ? '35px' : '30px', textAlign: 'left'
+      background: ui.numBoxBg, color: ui.numBoxColor, padding: '10px', 
+      borderRadius: ui.numBoxRadius, fontWeight: ui.numBoxWeight, fontSize: '14px', 
+      letterSpacing: '1px', borderLeft: ui.numBoxBorder, marginBottom: ui.numBoxMargin, textAlign: 'left'
     },
     progressBg: { background: ui.progressBg, height: ui.progressHeight, borderRadius: '3px' },
     progressBar: { 
       background: ui.primaryColor, width: currentTracking.progressWidth, borderRadius: '3px', 
-      boxShadow: ui.isSpider ? `0 0 10px ${ui.primaryColor}` : 'none' 
+      boxShadow: ui.progressShadow
     },
     statusBox: {
       background: ui.statusBg, color: ui.statusTextColor, border: ui.statusBorder,
-      borderRadius: ui.isSpider ? '4px' : '8px', padding: '16px', fontSize: '14px', lineHeight: '1.5', marginTop: ui.isSpider ? '35px' : '30px', textAlign: 'left'
+      borderRadius: ui.statusRadius, padding: '16px', fontSize: '14px', lineHeight: '1.5', marginTop: ui.statusMargin, textAlign: 'left'
     }
   };
 
   const getCircleStyle = (stepNumber) => {
     const isActive = currentTracking.currentStep >= stepNumber;
-    if (ui.isSpider) {
-      return {
-        background: ui.primaryColor, color: '#fff', border: 'none', 
-        boxShadow: isActive ? `0 0 8px ${ui.primaryColor}` : 'none',
-        opacity: isActive ? 1 : 0.2
-      };
-    } else {
-      return isActive 
-        ? { background: ui.primaryColor, color: '#fff', border: 'none' } 
-        : { background: '#fff', color: '#ccc', border: `2px solid ${ui.progressBg}` };
-    }
+    return isActive 
+      ? { background: ui.primaryColor, color: '#fff', border: 'none', boxShadow: ui.progressShadow } 
+      : { background: ui.cardBg, color: '#ccc', border: `2px solid ${ui.progressBg}`, opacity: ui.stepTransform === 'uppercase' ? 0.2 : 1 };
   };
 
   return (
@@ -91,15 +74,15 @@ function TrackingResult() {
 
         <div className="tracking-card" style={styles.card}>
           
-          <div style={{ marginBottom: ui.isSpider ? '35px' : '30px', textAlign: 'center' }}>
+          <div style={{ marginBottom: ui.statusMargin, textAlign: 'center' }}>
             <h2 style={styles.titleBrand}>{brand}</h2>
-            {!ui.isSpider && <div style={{ width: '40px', height: '1px', background: ui.secondaryColor, margin: '0 auto 15px' }}></div>}
-            <p style={{ color: ui.isSpider ? '#aaa' : '#1a2a40', fontSize: '14px', margin: '0' }}>{t.title}</p>
+            {ui.showDivider && <div style={{ width: '40px', height: '1px', background: ui.secondaryColor, margin: '0 auto 15px' }}></div>}
+            <p style={{ color: ui.subtitleColor, fontSize: '14px', margin: '0' }}>{t.title}</p>
           </div>
 
           <div className="tracking-number" style={styles.trackingNumBox}>
             {t.labelNum}{' '}
-            <span style={{ color: ui.isSpider ? ui.primaryColor : 'inherit', fontFamily: 'monospace', fontSize: '15px' }}>
+            <span style={{ color: ui.stepTransform === 'uppercase' ? ui.primaryColor : 'inherit', fontFamily: 'monospace', fontSize: '15px' }}>
               {trackingNumber}
             </span>
           </div>
@@ -108,16 +91,16 @@ function TrackingResult() {
             <div className="progress-bar" style={styles.progressBar}></div>
           </div>
 
-          <div className="steps" style={{ marginTop: ui.isSpider ? '30px' : '25px', listStyle: 'none', padding: '0' }}>
+          <div className="steps" style={{ marginTop: '25px', listStyle: 'none', padding: '0' }}>
             {[1, 2, 3, 4].map((step) => (
               <div key={step} className="step" style={{ listStyleType: 'none' }}>
                 <div className="circle" style={getCircleStyle(step)}>
                   {currentTracking.currentStep >= step ? "✓" : step}
                 </div>
                 <p style={{ 
-                  fontWeight: currentTracking.currentStep === step || ui.isSpider ? 'bold' : '400', 
-                  color: ui.isSpider ? ui.primaryColor : (currentTracking.currentStep >= step ? ui.primaryColor : '#999'), 
-                  fontSize: '13px', marginTop: '8px', textTransform: ui.isSpider ? 'uppercase' : 'none' 
+                  fontWeight: currentTracking.currentStep === step || ui.stepWeight === 'bold' ? 'bold' : '400', 
+                  color: currentTracking.currentStep >= step ? ui.primaryColor : '#999', 
+                  fontSize: '13px', marginTop: '8px', textTransform: ui.stepTransform 
                 }}>
                   {t[`step${step}`]}
                 </p>
