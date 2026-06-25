@@ -7,7 +7,7 @@ export const trackingTranslations = {
   },
   "SPIDER": {
     fr: { back: "← Retour", title: "Statut de l'expédition", labelNum: "Code :", step1: "Validé", step2: "Conditionnement", step3: "En Transit", step4: "Objectif Atteint" },
-    en: { back: "← Back", title: "Shipment Status", labelNum: "Code:", step1: "Verified", step2: "Packing", step3: "In Transit", step4: "Accomplished" }
+    en: { back: "← Back", title: "Shipment Status", letterNum: "Code:", step1: "Verified", step2: "Packing", step3: "In Transit", step4: "Accomplished" }
   },
   "JULES": {
     fr: { back: "← Retour", title: "Suivre mes achats", labelNum: "N° de commande :", step1: "Enregistrée", step2: "Préparation logistique", step3: "Expédiée", step4: "Prête en magasin / Livrée" },
@@ -54,21 +54,21 @@ export const brandStyles = {
   },
   "JULES": {
     isSpider: false,
-    primaryColor: "#0f233c",       // Bleu Marine profond chic
-    secondaryColor: "#2d5a27",     // Vert sapin urbain/casual
+    primaryColor: "#1e4620",       // Vert sapin/logistique dominant
+    secondaryColor: "#0f233c",     // Bleu marine en touche secondaire
     fontFamily: "'Inter', sans-serif", 
     cardBg: "#ffffff",             // Fond Blanc pur pour la carte
-    cardBorderTop: "5px solid #0f233c", // Barre supérieure bleu marine
+    cardBorderTop: "5px solid #1e4620", // Grosse barre supérieure Verte
     textColor: "#1f2937",          // Texte gris anthracite très foncé
     numBoxBg: "#f3f4f6",           // Boîtier du numéro gris clair épuré
-    numBoxColor: "#0f233c",        // Numéro écrit en bleu marine
-    numBoxBorder: "3px solid #2d5a27", // Ligne verte à gauche du numéro
-    progressBg: "#e5e7eb",         // Barre de chargement vide gris moyen
+    numBoxColor: "#1e4620",        // Numéro écrit en Vert
+    numBoxBorder: "3px solid #0f233c", // Ligne bleu marine à gauche du numéro
+    progressBg: "#e5e7eb",         // Barre vide gris moyen
     progressHeight: "5px",
-    statusBg: "#0f233c",           // Encadré final Bleu Marine
-    statusTextColor: "#ffffff",    // Texte blanc à l'intérieur
+    statusBg: "#1e4620",           // Grand encadré final Vert Sapin
+    statusTextColor: "#ffffff",    // Texte blanc dedans pour le contraste
     statusBorder: "none",
-    statusIcon: "👕 "              // Icône vêtement
+    statusIcon: "🌿 "
   }
 };
 
