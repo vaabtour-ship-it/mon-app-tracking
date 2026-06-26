@@ -1,7 +1,7 @@
 // src/TrackingResult.jsx
 import { useNavigate, useParams } from 'react-router-dom';
 import { brandStyles } from './data/mockBrands';         
-import { trackingData, mockShipmentData } from './data/mockShipments'; // <-- Ajout de mockShipmentData ici
+import { mockShipmentData } from './data/mockShipments';
 import { globalTranslations } from './data/translations';
 import './App.css';
 
@@ -14,22 +14,26 @@ function TrackingResult() {
   
   const trackingNumber = suiviId || localStorage.getItem('trackingNumber');
   
-  // LOGIQUE DE DÉTECTION : Ancien système OU Nouveau numéro Chronopost
-  let currentTracking = trackingData[trackingNumber];
-  const newMockNumber = mockShipmentData.shipments[0].tracking.trackingNumber;
+  // NOUVELLE LOGIQUE : Recherche du numéro dans le tableau mockShipmentData
+  let currentTracking = null;
 
-  if (!currentTracking && trackingNumber === newMockNumber) {
-    // Si c'est le numéro Chronopost, on mappe les données du gros JSON vers votre UI
+  // On trouve la commande qui contient le bon numéro de suivi
+  const matchedOrder = mockShipmentData.find(order => 
+    order.shipments?.some(shipment => shipment.tracking?.trackingNumber === trackingNumber)
+  );
+
+  if (matchedOrder) {
+    // Si on trouve une correspondance, on mappe dynamiquement les données du JSON vers ton UI
     currentTracking = {
-      brand: mockShipmentData.brand.name, // "La Fiancée"
+      brand: matchedOrder.brand?.name || "La Fiancée",
       currentStep: 4, 
       progressWidth: "100%",
       status: {
-        fr: `Votre colis Chronopost a été livré avec succès à ${mockShipmentData.invoicingAddress.city}.`,
-        en: `Your Chronopost package was successfully delivered to ${mockShipmentData.invoicingAddress.city}.`,
-        es: `Su paquete Chronopost fue entregado con éxito en ${mockShipmentData.invoicingAddress.city}.`,
-        de: `Ihr Chronopost-Paket wurde erfolgreich in ${mockShipmentData.invoicingAddress.city} zugestellt.`,
-        it: `Il tuo pacco Chronopost è stato consegnato con successo a ${mockShipmentData.invoicingAddress.city}.`
+        fr: `Votre colis Chronopost a été livré avec succès à ${matchedOrder.invoicingAddress?.city || 'votre destination'}.`,
+        en: `Your Chronopost package was successfully delivered to ${matchedOrder.invoicingAddress?.city || 'your destination'}.`,
+        es: `Su paquete Chronopost fue entregado con éxito en ${matchedOrder.invoicingAddress?.city || 'su destino'}.`,
+        de: `Ihr Chronopost-Paket wurde erfolgreich in ${matchedOrder.invoicingAddress?.city || 'Ihrem Zielort'} zugestellt.`,
+        it: `Il tuo pacco Chronopost è stato consegnato con successo a ${matchedOrder.invoicingAddress?.city || 'tua destinazione'}.`
       }
     };
   }
@@ -115,7 +119,6 @@ function TrackingResult() {
             <div className="progress-bar" style={styles.progressBar}></div>
           </div>
 
-          {/* AJOUT : Flexbox structuré pour éviter les chevauchements */}
           <div className="steps" style={{ 
             marginTop: '25px', 
             listStyle: 'none', 
