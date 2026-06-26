@@ -1,7 +1,7 @@
 // src/TrackingResult.jsx
 import { useNavigate, useParams } from 'react-router-dom';
-import { brandStyles } from './data/mockBrands';         // <-- Nouvel import !
-import { trackingData } from './data/mockShipments';     // <-- Nouvel import !
+import { brandStyles } from './data/mockBrands';         
+import { trackingData, mockShipmentData } from './data/mockShipments'; // <-- Ajout de mockShipmentData ici
 import { globalTranslations } from './data/translations';
 import './App.css';
 
@@ -13,7 +13,26 @@ function TrackingResult() {
   const currentLang = localStorage.getItem('appLang') || browserLang || 'fr';
   
   const trackingNumber = suiviId || localStorage.getItem('trackingNumber');
-  const currentTracking = trackingData[trackingNumber];
+  
+  // LOGIQUE DE DÉTECTION : Ancien système OU Nouveau numéro Chronopost
+  let currentTracking = trackingData[trackingNumber];
+  const newMockNumber = mockShipmentData.shipments[0].tracking.trackingNumber;
+
+  if (!currentTracking && trackingNumber === newMockNumber) {
+    // Si c'est le numéro Chronopost, on mappe les données du gros JSON vers votre UI
+    currentTracking = {
+      brand: mockShipmentData.brand.name, // "La Fiancée"
+      currentStep: 4, 
+      progressWidth: "100%",
+      status: {
+        fr: `Votre colis Chronopost a été livré avec succès à ${mockShipmentData.invoicingAddress.city}.`,
+        en: `Your Chronopost package was successfully delivered to ${mockShipmentData.invoicingAddress.city}.`,
+        es: `Su paquete Chronopost fue entregado con éxito en ${mockShipmentData.invoicingAddress.city}.`,
+        de: `Ihr Chronopost-Paket wurde erfolgreich in ${mockShipmentData.invoicingAddress.city} zugestellt.`,
+        it: `Il tuo pacco Chronopost è stato consegnato con successo a ${mockShipmentData.invoicingAddress.city}.`
+      }
+    };
+  }
 
   if (!currentTracking) {
     const fallbackT = globalTranslations[currentLang] || globalTranslations.fr || globalTranslations.en;
@@ -28,7 +47,8 @@ function TrackingResult() {
   }
 
   const brand = currentTracking.brand;
-  const ui = brandStyles[brand] || brandStyles["Atelier Tuffery"];
+  // On utilise le style JULES par défaut pour "La Fiancée" si elle n'a pas son propre style personnalisé
+  const ui = brandStyles[brand] || brandStyles["JULES"] || brandStyles["Atelier Tuffery"];
   
   const t = globalTranslations[currentLang] || globalTranslations.en || globalTranslations.fr;
   const currentStatus = currentTracking.status[currentLang] || currentTracking.status.en || currentTracking.status.fr;
