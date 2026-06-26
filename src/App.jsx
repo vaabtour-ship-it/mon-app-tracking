@@ -93,7 +93,11 @@ export default function App() {
     localStorage.setItem('trackingNumber', number);
     localStorage.setItem('appLang', lang);
 
-    if (trackingData[number]) {
+    // On récupère le numéro Chronopost dynamique
+    const newMockNumber = mockShipmentData.shipments[0].tracking.trackingNumber;
+
+    // L'application accepte l'ancien objet OU le nouveau numéro Chronopost
+    if (trackingData[number] || number === newMockNumber) {
       navigate(`/${number}`); 
     } else {
       setError('unrecognized');
@@ -145,8 +149,11 @@ export default function App() {
     if (error === 'unrecognized') return t.errorUnrecognized;
     return null;
   };
+
+  // Affichage dans la console au chargement
   console.log("Données brutes de la première marque :", mockBrandsData.data[0].name); 
   console.log("Nom de l'acheteur de la commande :", mockShipmentData.buyer.firstName);
+
   return (
     <div className="app-container">
       <button 
