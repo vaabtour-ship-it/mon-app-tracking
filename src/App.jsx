@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom' 
-import { trackingData } from './data/mockShipments';
+import { brandStyles, mockBrandsData } from './data/mockBrands';
+import { trackingData, mockShipmentData } from './data/mockShipments';
 import './App.css'
 
 const translations = {
@@ -144,7 +145,8 @@ export default function App() {
     if (error === 'unrecognized') return t.errorUnrecognized;
     return null;
   };
-  
+  console.log("Données brutes de la première marque :", mockBrandsData.data[0].name); 
+  console.log("Nom de l'acheteur de la commande :", mockShipmentData.buyer.firstName);
   return (
     <div className="app-container">
       <button 

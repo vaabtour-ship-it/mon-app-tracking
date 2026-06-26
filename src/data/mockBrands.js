@@ -1,5 +1,6 @@
 // src/data/mockBrands.js
 
+// Styles visuels pour l'affichage des marques
 export const brandStyles = {
   "Atelier Tuffery": {
     primaryColor: "#1a2a40",
@@ -75,15 +76,15 @@ export const brandStyles = {
     }
   },
   "JULES": {
-    primaryColor: "#1e4620",       
-    secondaryColor: "#0f233c",     
+    primaryColor: "#1e4620",      
+    secondaryColor: "#0f233c",    
     fontFamily: "'Inter', sans-serif", 
-    cardBg: "#ffffff",             
+    cardBg: "#ffffff",            
     cardBorderTop: "5px solid #1e4620", 
     textColor: "#1f2937",          
     cardRadius: "12px",
     cardShadow: "0 10px 30px rgba(0,0,0,0.1)",
-    numBoxBg: "#f3f4f6",           
+    numBoxBg: "#f3f4f6",          
     numBoxColor: "#1e4620",        
     numBoxBorder: "3px solid #0f233c", 
     numBoxRadius: "6px",
@@ -92,7 +93,7 @@ export const brandStyles = {
     progressBg: "#e5e7eb",         
     progressHeight: "5px",
     progressShadow: "none",
-    statusBg: "#1e4620",           
+    statusBg: "#1e4620",          
     statusTextColor: "#ffffff",    
     statusBorder: "none",
     statusIcon: "🌿 ",
@@ -110,4 +111,104 @@ export const brandStyles = {
       padding: '8px 16px', fontSize: '14px', borderRadius: '4px', marginBottom: '15px', cursor: 'pointer'
     }
   }
+};
+
+// Données des marques (JSON fourni)
+export const mockBrandsData = {
+  "data": [
+    {
+      "id": "br_01KERSW3KVX6QHXNRSP5JF9GZR",
+      "created_at": "2026-01-12T09:51:24.282Z",
+      "updated_at": "2026-02-17T17:04:42.286Z",
+      "deleted_at": null,
+      "name": "WeDressFair",
+      "code": "WD",
+      "registration_number": "834527855",
+      "capital": "15000",
+      "status": "ACTIVE",
+      "original_url": "https://www.wedressfair.fr/",
+      "nopli_url": "https://www.secondevie.wedressfair.fr/",
+      "shopify_domain": "qyxc7c-a3.myshopify.com",
+      "brand_owner": "user_01KF0V7FC259MTZG6Y6G42TJ58",
+      "storefront_name": "Seconde Vie",
+      "logo_url": "https://cdn.shopify.com/s/files/1/0779/1676/6475/files/wedressfair-logo_aa0edb9d-0682-4a38-a78c-ad5acc5ca040.png?v=1770887646",
+      "company_name": "We Dress Fair SAS",
+      "VAT_number": "FR94834527855",
+      "light_color": "#FFFFFF",
+      "dark_color": "#000000",
+      "heading_font": "Roboto",
+      "text_font": "Open Sans",
+      "heading_format": "uppercase",
+      "generate_brand_invoices": true,
+      "gift_card_request_event": "ORDER_CREATED",
+      "gift_card_top_up": 120,
+      "C2C_bank_transfer_commission_ttc": 15,
+      "C2C_gift_card_commission_ttc": 24,
+      "hq_country_code": "fr",
+      "buyer_rating_url": "https://f6ztyemwvbu.typeform.com/to/V6Pz3FJ0#shipment_id={shipmentId}&email={email}&lang={country}",
+      "seller_rating_url": "https://example.com/seller-rating",
+      "shopify_access_token": "fcen4JCRPh8sS5tdiPjfqIMGdkabPhFSGEuUsnHnM8ezcGYsfw6hDLY2yYszgN1X",
+      "default_language": "fr",
+      "subscription_stripe_id": "sub_1ExampleABC123",
+      "available_languages": [
+        "fr"
+      ],
+      "faq_url": "https://www.secondevie.wedressfair.fr/pages/faq",
+      "listing_rules": "No adult content. No counterfeit products.",
+      "wallet_id": "wallet_01KH6K4STKVQZW7ME4P02FQ100",
+      "image_listing_orientation": "PORTRAIT",
+      "banner_url": null,
+      "address_id": "address_01KF0VE3A6QE35RGBX0NRGN5X9",
+      "currency_code": "eur",
+      "company_type": "SAS"
+    },
+    {
+      "id": "recQKJlWbHLnzWc0U",
+      "created_at": "2024-02-02T10:57:00.000Z",
+      "updated_at": "2025-06-06T10:14:22.290Z",
+      "deleted_at": null,
+      "name": "Kleman",
+      "code": "KL",
+      "registration_number": "70 201 785",
+      "capital": "1000000.00",
+      "status": "ACTIVE",
+      "original_url": "https://cleon.com",
+      "nopli_url": "https://www.kleman-france.nopli.eu/",
+      "shopify_domain": "8dc145-2.myshopify.com",
+      "brand_owner": "recyZMIRI2YeZeYdB",
+      "storefront_name": "Seconde Vie",
+      "logo_url": "https://tbuzxjeicktekxddacna.supabase.co/storage/v1/object/public/brands-media/KL%20Logo",
+      "company_name": "BEL AIR DIGITAL",
+      "VAT_number": "FR 340 702 017 85",
+      "light_color": "#ffffff",
+      "dark_color": "#000000",
+      "heading_font": "Arial",
+      "text_font": "Arial",
+      "heading_format": "uppercase",
+      "generate_brand_invoices": true,
+      "gift_card_request_event": "ORDER_CONFIRMED",
+      "gift_card_top_up": 120,
+      "C2C_bank_transfer_commission_ttc": 15,
+      "C2C_gift_card_commission_ttc": 18,
+      "hq_country_code": "fr",
+      "buyer_rating_url": "https://f6ztyemwvbu.typeform.com/to/V6Pz3FJ0#shipment_id={shipmentId}&email={email}&lang={country}",
+      "seller_rating_url": "https://f6ztyemwvbu.typeform.com/to/aVDp8Jig#email={email}&orderline_id={orderline_id}",
+      "shopify_access_token": "dXpVexGCtUtD01L+vWC2sEbwbC02inde+nOx76p+FlLbnXt8fExeGaQI3ts8JwW5",
+      "default_language": "fr",
+      "subscription_stripe_id": "sub_1QoooBFoxk1txdKa2JuqghfL",
+      "available_languages": [
+        "fr",
+        "en"
+      ],
+      "faq_url": "https://www.kleman-france.nopli.eu/pages/questions-frequentes",
+      "listing_rules": "Langues : FR, EN",
+      "wallet_id": "recvhi1OkLzlXuUsb",
+      "image_listing_orientation": "PORTRAIT",
+      "banner_url": "",
+      "address_id": "rec6XDdbuyyKgZnwI",
+      "currency_code": "eur",
+      "company_type": "SAS"
+    }
+  ],
+  "total": 2
 };
