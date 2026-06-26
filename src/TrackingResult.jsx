@@ -82,8 +82,8 @@ function TrackingResult() {
   const getCircleStyle = (stepNumber) => {
     const isActive = currentTracking.currentStep >= stepNumber;
     return isActive 
-      ? { background: ui.primaryColor, color: '#fff', border: 'none', boxShadow: ui.progressShadow } 
-      : { background: ui.cardBg, color: '#ccc', border: `2px solid ${ui.progressBg}`, opacity: ui.stepTransform === 'uppercase' ? 0.2 : 1 };
+      ? { background: ui.primaryColor, color: '#fff', border: 'none', boxShadow: ui.progressShadow, margin: '0 auto' } 
+      : { background: ui.cardBg, color: '#ccc', border: `2px solid ${ui.progressBg}`, opacity: ui.stepTransform === 'uppercase' ? 0.2 : 1, margin: '0 auto' };
   };
 
   return (
@@ -115,16 +115,38 @@ function TrackingResult() {
             <div className="progress-bar" style={styles.progressBar}></div>
           </div>
 
-          <div className="steps" style={{ marginTop: '25px', listStyle: 'none', padding: '0' }}>
+          {/* AJOUT : Flexbox structuré pour éviter les chevauchements */}
+          <div className="steps" style={{ 
+            marginTop: '25px', 
+            listStyle: 'none', 
+            padding: '0', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'flex-start' 
+          }}>
             {[1, 2, 3, 4].map((step) => (
-              <div key={step} className="step" style={{ listStyleType: 'none' }}>
+              <div key={step} className="step" style={{ 
+                listStyleType: 'none', 
+                flex: 1, 
+                textAlign: 'center', 
+                maxWidth: '23%', 
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center' 
+              }}>
                 <div className="circle" style={getCircleStyle(step)}>
                   {currentTracking.currentStep >= step ? "✓" : step}
                 </div>
                 <p style={{ 
                   fontWeight: currentTracking.currentStep === step || ui.stepWeight === 'bold' ? 'bold' : '400', 
                   color: currentTracking.currentStep >= step ? ui.primaryColor : '#999', 
-                  fontSize: '13px', marginTop: '8px', textTransform: ui.stepTransform 
+                  fontSize: '12px', 
+                  marginTop: '8px', 
+                  textTransform: ui.stepTransform,
+                  wordBreak: 'break-word',
+                  lineHeight: '1.3',
+                  marginRight: '4px',
+                  marginLeft: '4px'
                 }}>
                   {t[`step${step}`]}
                 </p>
