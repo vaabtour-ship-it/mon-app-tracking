@@ -1,6 +1,4 @@
-// src/data/mockBrands.js
 
-// Styles visuels pour l'affichage des marques
 export const brandStyles = {
   "Atelier Tuffery": {
     primaryColor: "#1a2a40",
@@ -113,7 +111,6 @@ export const brandStyles = {
   }
 };
 
-// Données des marques (JSON fourni)
 export const mockBrandsData = {
   "data": [
     {

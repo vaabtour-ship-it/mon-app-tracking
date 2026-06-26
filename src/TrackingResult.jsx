@@ -14,16 +14,13 @@ function TrackingResult() {
   
   const trackingNumber = suiviId || localStorage.getItem('trackingNumber');
   
-  // NOUVELLE LOGIQUE : Recherche du numéro dans le tableau mockShipmentData
   let currentTracking = null;
 
-  // On trouve la commande qui contient le bon numéro de suivi
   const matchedOrder = mockShipmentData.find(order => 
     order.shipments?.some(shipment => shipment.tracking?.trackingNumber === trackingNumber)
   );
 
   if (matchedOrder) {
-    // Si on trouve une correspondance, on mappe dynamiquement les données du JSON vers ton UI
     currentTracking = {
       brand: matchedOrder.brand?.name || "La Fiancée",
       currentStep: 4, 
@@ -51,7 +48,6 @@ function TrackingResult() {
   }
 
   const brand = currentTracking.brand;
-  // On utilise le style JULES par défaut pour "La Fiancée" si elle n'a pas son propre style personnalisé
   const ui = brandStyles[brand] || brandStyles["JULES"] || brandStyles["Atelier Tuffery"];
   
   const t = globalTranslations[currentLang] || globalTranslations.en || globalTranslations.fr;

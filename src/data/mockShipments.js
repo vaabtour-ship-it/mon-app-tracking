@@ -1,6 +1,4 @@
-// src/data/mockShipments.js
 
-// Liste des expéditions de test (Mock Data)
 export const mockShipmentData = [
   {
     "id": "recsPo5wueSCM56fT",
@@ -513,8 +511,8 @@ export const mockShipmentData = [
       "currency": "eur"
     },
     "anomaly": "false"
-  }, // <-- Ajout de la virgule pour lier au troisième objet
-  { // <-- Le troisième objet commence ici, à l'intérieur du tableau
+  }, 
+  { 
     "id": "recfrfLXqdeSXtkHO",
     "displayId": "recfrfLXqdeSXtkHO",
     "externalId": {
@@ -748,4 +746,4 @@ export const mockShipmentData = [
     },
     "anomaly": "false"
   } 
-]; // <-- Le crochet de fermeture final du tableau `mockShipmentData` se trouve maintenant ici
+]; 

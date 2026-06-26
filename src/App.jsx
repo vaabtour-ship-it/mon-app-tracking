@@ -93,7 +93,6 @@ export default function App() {
     localStorage.setItem('trackingNumber', number);
     localStorage.setItem('appLang', lang);
 
-    // Vérifie si le numéro saisi correspond à l'un des colis présents dans mockShipmentData
     const isValidTracking = mockShipmentData.some(order => 
       order.shipments?.some(shipment => shipment.tracking?.trackingNumber === number)
     );
@@ -150,8 +149,6 @@ export default function App() {
     if (error === 'unrecognized') return t.errorUnrecognized;
     return null;
   };
-
-  // Affichage sécurisé dans la console au chargement
   console.log("Données brutes de la première marque :", mockBrandsData.data?.[0]?.name); 
   console.log("Nom de l'acheteur de la commande :", mockShipmentData[0]?.buyer?.firstName);
 
