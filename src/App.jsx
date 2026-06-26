@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom' 
 import { brandStyles, mockBrandsData } from './data/mockBrands';
-import { trackingData, mockShipmentData } from './data/mockShipments';
+import { mockShipmentData } from './data/mockShipments';
 import './App.css'
 
 const translations = {
@@ -93,11 +93,12 @@ export default function App() {
     localStorage.setItem('trackingNumber', number);
     localStorage.setItem('appLang', lang);
 
-    // On récupère le numéro Chronopost dynamique
-    const newMockNumber = mockShipmentData.shipments[0].tracking.trackingNumber;
+    // Vérifie si le numéro saisi correspond à l'un des colis présents dans mockShipmentData
+    const isValidTracking = mockShipmentData.some(order => 
+      order.shipments?.some(shipment => shipment.tracking?.trackingNumber === number)
+    );
 
-    // L'application accepte l'ancien objet OU le nouveau numéro Chronopost
-    if (trackingData[number] || number === newMockNumber) {
+    if (isValidTracking) {
       navigate(`/${number}`); 
     } else {
       setError('unrecognized');
@@ -150,9 +151,9 @@ export default function App() {
     return null;
   };
 
-  // Affichage dans la console au chargement
-  console.log("Données brutes de la première marque :", mockBrandsData.data[0].name); 
-  console.log("Nom de l'acheteur de la commande :", mockShipmentData.buyer.firstName);
+  // Affichage sécurisé dans la console au chargement
+  console.log("Données brutes de la première marque :", mockBrandsData.data?.[0]?.name); 
+  console.log("Nom de l'acheteur de la commande :", mockShipmentData[0]?.buyer?.firstName);
 
   return (
     <div className="app-container">
